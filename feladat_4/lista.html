@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Adj a listádhoz elemeket:</h1>
+<form action="/action_page.php">
+    <label for="name1">Név:</label>
+    <input type="text" id="name1" name="name1">
+    <label for="price1">Ár:</label>
+    <input type="number" id="price1" name="price1"><br><br>
+    <label for="name2">Név:</label>
+    <input type="text" id="name2" name="name2">
+    <label for="price2">Ár:</label>
+    <input type="number" id="price2" name="price2"><br><br>
+    <label for="name3">Név:</label>
+    <input type="text" id="name3" name="name3">
+    <label for="price3">Ár:</label>
+    <input type="number" id="price3" name="price3"><br><br>
+    <label for="name4">Név:</label>
+    <input type="text" id="name4" name="name4">
+    <label for="price4">Ár:</label>
+    <input type="number" id="price4" name="price4"><br><br>
+    <label for="name5">Név:</label>
+    <input type="text" id="name5" name="name5">
+    <label for="price5">Ár:</label>
+    <input type="number" id="price5" name="price5"><br><br>
+    <button type="button" class = "button" onclick="minimum()">Minimum</button>
+    <button type="button" class = "button" onclick="average()">Átlag</button>
+    <button type="button" class = "button" onclick="deviation()">Szórás</button>
+</form>
+<p id="min"></p>
+<p id="avg"></p>
+<p id="dev"></p>
+
+</body>
+  <script>
+    function minimum() {
+    const elem1 = {
+        name: document.getElementById('name1').value,
+        price: document.getElementById('price1').value
+    }
+    var minimum = {
+        price: elem1.price,
+        name: elem1.name
+    }
+    const elem2 = {
+        name: document.getElementById('name2').value,
+        price: document.getElementById('price2').value
+    }
+    if (elem2.price < minimum.price){
+        minimum = {
+        price: elem2.price,
+        name: elem2.name
+    }
+    }
+    const elem3 = {
+        name: document.getElementById('name3').value,
+        price: document.getElementById('price3').value
+    }
+    if (elem3.price < minimum.price){
+        minimum = {
+        price: elem3.price,
+        name: elem3.name
+    }
+    }
+    const elem4 = {
+        name: document.getElementById('name4').value,
+        price: document.getElementById('price4').value
+    }
+    if (elem4.price < minimum.price){
+        minimum = {
+        price: elem4.price,
+        name: elem4.name
+    }
+    }
+    const elem5 = {
+        name: document.getElementById('name5').value,
+        price: document.getElementById('price5').value
+    }
+    if (elem5.price < minimum.price){
+        minimum = {
+        price: elem5.price,
+        name: elem5.name
+    }
+    }
+    document.getElementById("min").innerHTML = "Legolcsóbb termék: " + minimum.name;
+}
+
+  </script>
+  <script>
+    function average() {
+        const elem1 = {
+        name: document.getElementById('name1').value,
+        price: document.getElementById('price1').value
+    }
+    const elem2 = {
+        name: document.getElementById('name2').value,
+        price: document.getElementById('price2').value
+    }
+    const elem3 = {
+        name: document.getElementById('name3').value,
+        price: document.getElementById('price3').value
+    }
+    const elem4 = {
+        name: document.getElementById('name4').value,
+        price: document.getElementById('price4').value
+    }
+    const elem5 = {
+        name: document.getElementById('name5').value,
+        price: document.getElementById('price5').value
+    }
+    var avg = (parseInt(elem1.price) + parseInt(elem2.price) + parseInt(elem3.price) + parseInt(elem4.price) + parseInt(elem5.price))/5
+    document.getElementById("avg").innerHTML = "Átlagár: " + avg;
+
+    }
+  </script>
+  <script>
+    function deviation() {
+        const elem1 = {
+        name: document.getElementById('name1').value,
+        price: document.getElementById('price1').value
+    }
+    const elem2 = {
+        name: document.getElementById('name2').value,
+        price: document.getElementById('price2').value
+    }
+    const elem3 = {
+        name: document.getElementById('name3').value,
+        price: document.getElementById('price3').value
+    }
+    const elem4 = {
+        name: document.getElementById('name4').value,
+        price: document.getElementById('price4').value
+    }
+    const elem5 = {
+        name: document.getElementById('name5').value,
+        price: document.getElementById('price5').value
+    }
+    var avg = (parseInt(elem1.price) + parseInt(elem2.price) + parseInt(elem3.price) + parseInt(elem4.price) + parseInt(elem5.price))/5
+    var varian = ((parseFloat(avg)-parseFloat(elem1.price))**2 + (parseFloat(avg)-parseFloat(elem2.price))**2 + (parseFloat(avg)-parseFloat(elem3.price))**2 + (parseFloat(avg)-parseFloat(elem4.price))**2 + (parseFloat(avg)-parseFloat(elem5.price))**2)/5
+    var dev = Math.sqrt(varian)
+    document.getElementById("dev").innerHTML = "Szórás: " + String(dev)
+    }
+  </script>
+
+</html>
+
